@@ -1,6 +1,8 @@
 package com.resul.springsecuritycaptcha.service;
 
+import com.resul.springsecuritycaptcha.dto.UserDTO;
 import com.resul.springsecuritycaptcha.entity.UserEntity;
+import com.resul.springsecuritycaptcha.mapper.UserMapper;
 import com.resul.springsecuritycaptcha.repository.UserRepository;
 import jakarta.persistence.Entity;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +14,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public List<UserEntity> findAll() {
+    public List<UserDTO> findAll() {
         var userList = userRepository.findAll();
-        return userList;
+        return userMapper.toUserDTOList(userList);
     }
 }

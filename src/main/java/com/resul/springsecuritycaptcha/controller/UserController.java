@@ -1,5 +1,6 @@
 package com.resul.springsecuritycaptcha.controller;
 
+import com.resul.springsecuritycaptcha.dto.UserDTO;
 import com.resul.springsecuritycaptcha.entity.UserEntity;
 import com.resul.springsecuritycaptcha.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<UserEntity>> findAll(){
+    public ResponseEntity<List<UserDTO>> findAll(){
         return ResponseEntity.ok(userService.findAll());
     }
 }
